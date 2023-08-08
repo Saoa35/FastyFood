@@ -9,7 +9,7 @@ export const COLORS: Colors = {
   accentPink: '#F96165',
 };
 
-export const Categories: Category = [
+export const Categories: Category[] = [
   {
     name: 'Burger',
     image: require('../database/images/burger.png'),
