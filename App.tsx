@@ -1,13 +1,17 @@
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {Text, View} from 'react-native';
 import Home from './src/components/Home';
 
 function App(): JSX.Element {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View>
-      {/* <Text>Hello World !!!</Text> */}
-      <Home />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
