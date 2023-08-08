@@ -13,7 +13,7 @@ import {COLORS, Categories} from '../database/items';
 import Material from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
-import {Category, Item} from '../@types/inrefaces';
+import {Category} from '../@types/inrefaces';
 
 const Home: React.FC = () => {
   const [currentSelected, setCurrentSelected] = useState(0);
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
             justifyContent: 'space-evenly',
             alignItems: 'center',
             backgroundColor:
-              currentSelected == index ? COLORS.accent : COLORS.white,
+              currentSelected === index ? COLORS.accent : COLORS.white,
             borderRadius: 20,
             margin: 10,
             elevation: 5,
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
               height: 30,
               borderRadius: 100,
               backgroundColor:
-                currentSelected == index ? COLORS.white : COLORS.accentRed,
+                currentSelected === index ? COLORS.white : COLORS.accentRed,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -58,7 +58,7 @@ const Home: React.FC = () => {
               name="angle-right"
               style={{
                 fontSize: 12,
-                color: currentSelected == index ? COLORS.black : COLORS.white,
+                color: currentSelected === index ? COLORS.black : COLORS.white,
               }}
             />
           </View>
@@ -179,6 +179,16 @@ const Home: React.FC = () => {
             renderItem={renderCatigories}
             showsHorizontalScrollIndicator={false}
           />
+          <Text
+            style={{
+              paddingTop: 20,
+              paddingHorizontal: 20,
+              fontSize: 18,
+              fontWeight: '700',
+              color: COLORS.black,
+            }}>
+            Popular
+          </Text>
         </View>
       </ScrollView>
     </View>
