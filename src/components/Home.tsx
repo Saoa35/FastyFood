@@ -13,15 +13,19 @@ import {COLORS, Categories} from '../database/items';
 import Material from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
-import {Category} from '../@types/inrefaces';
+import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {Category, Item} from '../@types/inrefaces';
 
-const Home: React.FC = () => {
+const Home: React.FC = ({navigation}) => {
   const [currentSelected, setCurrentSelected] = useState(0);
 
-  const renderItems = (data, index) => {
+  const renderItems = (data: Item, index: number) => {
     return (
       <TouchableOpacity
+        onPress={() => navigation.push('fullItem')}
         key={index}
+        activeOpacity={0.7}
         style={{
           width: '100%',
           height: 180,
@@ -62,7 +66,59 @@ const Home: React.FC = () => {
                 top of the week
               </Text>
             </View>
-            <Text>{data.name}</Text>
+            <Text
+              style={{
+                fontSize: 22,
+                color: COLORS.black,
+                fontWeight: 'bold',
+                paddingTop: 10,
+              }}>
+              {data.name}
+            </Text>
+            <Text style={{fontSize: 12, color: COLORS.black, opacity: 0.5}}>
+              {data.weight}
+            </Text>
+          </View>
+          <View style={{width: 150, height: 150, marginRight: -45}}>
+            <Image
+              source={data.image}
+              style={{width: '100%', height: '100%', resizeMode: 'contain'}}
+            />
+          </View>
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                width: 85,
+                height: 50,
+                backgroundColor: COLORS.accent,
+                borderTopRightRadius: 20,
+                borderBottomLeftRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Entypo name="plus" style={{fontSize: 18, color: COLORS.black}} />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginLeft: 20,
+              }}>
+              <AntDesign
+                name="star"
+                style={{fontSize: 12, color: COLORS.black, paddingRight: 5}}
+              />
+              <Text
+                style={{fontSize: 15, color: COLORS.black, fontWeight: 'bold'}}>
+                {data.rating}
+              </Text>
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -125,7 +181,7 @@ const Home: React.FC = () => {
         height: '100%',
         backgroundColor: COLORS.white,
       }}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
             width: '100%',
@@ -241,6 +297,23 @@ const Home: React.FC = () => {
             Popular
           </Text>
           {Categories[currentSelected].items.map(renderItems)}
+          <TouchableOpacity
+            style={{
+              margin: 30,
+              justifyContent: 'center',
+              alignItems: 'center',
+              opacity: 0.5,
+            }}>
+            <Text
+              style={{
+                fontSize: 16,
+                color: COLORS.black,
+                borderBottomWidth: 1,
+                borderBottomColor: COLORS.black,
+              }}>
+              Load more
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
