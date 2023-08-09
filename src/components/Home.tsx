@@ -18,6 +18,57 @@ import {Category} from '../@types/inrefaces';
 const Home: React.FC = () => {
   const [currentSelected, setCurrentSelected] = useState(0);
 
+  const renderItems = (data, index) => {
+    return (
+      <TouchableOpacity
+        key={index}
+        style={{
+          width: '100%',
+          height: 180,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            width: '90%',
+            height: 160,
+            backgroundColor: COLORS.white,
+            borderRadius: 20,
+            elevation: 4,
+            position: 'relative',
+            padding: 15,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <View style={{marginBottom: 50}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                display: data.isTopOfTheWeek ? 'flex' : 'none',
+              }}>
+              <FontAwesome
+                name="crown"
+                style={{fontSize: 10, color: COLORS.accent}}
+              />
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: COLORS.black,
+                  opacity: 0.8,
+                  marginLeft: 5,
+                }}>
+                top of the week
+              </Text>
+            </View>
+            <Text>{data.name}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   const renderCatigories = ({item, index}: {item: Category; index: number}) => {
     return (
       <TouchableOpacity
@@ -189,6 +240,7 @@ const Home: React.FC = () => {
             }}>
             Popular
           </Text>
+          {Categories[currentSelected].items.map(renderItems)}
         </View>
       </ScrollView>
     </View>
