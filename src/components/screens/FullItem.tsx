@@ -1,3 +1,4 @@
+import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {COLORS} from '../../database/items';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
