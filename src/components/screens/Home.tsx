@@ -9,21 +9,33 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import {COLORS, Categories} from '../database/items';
-import Material from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {COLORS, Categories} from '../../database/items';
+import Segment from 'react-native-vector-icons/MaterialIcons';
+import Search from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Category, Item} from '../@types/inrefaces';
+import {Category, Item} from '../../@types/inrefaces';
 
-const Home: React.FC = ({navigation}) => {
+const Home: React.FC = ({navigation}: any) => {
   const [currentSelected, setCurrentSelected] = useState(0);
 
   const renderItems = (data: Item, index: number) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.push('fullItem')}
+        onPress={() =>
+          navigation.navigate('fullItem', {
+            name: data.name,
+            price: data.price,
+            isTopOfTheWeek: data.isTopOfTheWeek,
+            image: data.image,
+            size: data.size,
+            crust: data.crust,
+            delivery: data.delivery,
+            ingredients: data.ingredients,
+            navigation: navigation,
+          })
+        }
         key={index}
         activeOpacity={0.7}
         style={{
@@ -192,7 +204,7 @@ const Home: React.FC = ({navigation}) => {
           <StatusBar backgroundColor={COLORS.white} barStyle={'dark-content'} />
 
           <Image
-            source={require('../database/images/background.png')}
+            source={require('../../database/images/background.png')}
             style={{position: 'absolute', top: 0, left: -100}}
           />
 
@@ -204,7 +216,7 @@ const Home: React.FC = ({navigation}) => {
             }}>
             <TouchableOpacity style={{width: 40, height: 40}}>
               <Image
-                source={require('../database/images/profile.jpg')}
+                source={require('../../database/images/profile.jpg')}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -215,7 +227,7 @@ const Home: React.FC = ({navigation}) => {
             </TouchableOpacity>
 
             <TouchableOpacity>
-              <Material
+              <Segment
                 name="segment"
                 style={{fontSize: 28, color: COLORS.black}}
               />
@@ -251,7 +263,7 @@ const Home: React.FC = ({navigation}) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Ionicons
+            <Search
               name="search"
               style={{fontSize: 20, color: COLORS.black, opacity: 0.8}}
             />

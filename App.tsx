@@ -1,8 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import Home from './src/components/Home';
-import FullItem from './src/components/FullItem';
+import Home from './src/components/screens/Home';
+import FullItem from './src/components/screens/FullItem';
 
 function App(): JSX.Element {
   const Stack = createNativeStackNavigator();
