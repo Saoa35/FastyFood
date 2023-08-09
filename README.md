@@ -1,3 +1,7 @@
+This project was created in React Native.
+![Screenshot 2023-08-09 191048](https://github.com/Saoa35/FastyFood/assets/78507597/528c13a0-6fd8-4242-ad07-a0ebe265a73d)
+![Screenshot 2023-08-09 191150](https://github.com/Saoa35/FastyFood/assets/78507597/9c792307-a4c1-4c3c-b204-f0c53672427d)
+![Screenshot 2023-08-09 191251](https://github.com/Saoa35/FastyFood/assets/78507597/2767201a-9b3d-4c8b-a8fb-c8b83f28382b)
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
